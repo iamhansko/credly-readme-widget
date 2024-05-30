@@ -8,9 +8,9 @@ router.get('/', async function(req, res, next) {
   const username = req.query.name;
 
   if (!username) {
-    const userNameEmptyErrorMessage = "Username is Empty";
+    const userNameEmptyErrorMessage = 'Username is Empty';
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.send(`<svg xmlns="http://www.w3.org/2000/svg" width="150"><text x="10" y="40">${userNameEmptyErrorMessage}</text></svg>`);
+    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='150'><text x='10' y='40'>${userNameEmptyErrorMessage}</text></svg>`);
     return null;
   }
 
@@ -20,9 +20,9 @@ router.get('/', async function(req, res, next) {
   const badgeList = $('.cr-public-earned-badge-grid-item');
 
   if (!badgeList.length) {
-    const noDataErrorMessage = "No Data Found";
+    const noDataErrorMessage = 'No Data Found';
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.send(`<svg xmlns="http://www.w3.org/2000/svg" width="150"><text x="10" y="40">${noDataErrorMessage}</text></svg>`);
+    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='150'><text x='10' y='40'>${noDataErrorMessage}</text></svg>`);
     return null;
   }
 
@@ -36,7 +36,7 @@ router.get('/', async function(req, res, next) {
   const rows = Math.ceil(data.length / columns);
 
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width='${columns*240}' height='${rows*240}'>
+    <svg xmlns='http://www.w3.org/2000/svg' width='${columns*240}' height='${rows*240}'>
       ${Array.from({length : rows}, () => 0).map((_, row)=>{
         return data.slice(row*columns, (row+1)*columns).map((item, index)=>{
           return(
@@ -50,10 +50,15 @@ router.get('/', async function(req, res, next) {
   `;
 
   res.setHeader('Content-Type', 'image/png');
-  res.send(await convert(svg, {puppeteer: {
-    executablePath: '/usr/bin/chromium',
-    args: ['--no-sandbox','--disable-setuid-sandbox']
-  }}));
+  // CONTAINER_RUNTIME = 'docker' | 'none'
+  if (process.env.CONTAINER_RUNTIME == 'docker') {
+    res.send(await convert(svg, {puppeteer: {
+      executablePath: '/usr/bin/chromium',
+      args: ['--no-sandbox','--disable-setuid-sandbox']
+    }}));
+    return null;
+  } 
+  res.send(await convert(svg));
 });
 
 module.exports = router;
