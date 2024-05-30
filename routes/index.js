@@ -28,7 +28,7 @@ router.get('/', async function(req, res, next) {
 
   badgeList.map((i, item) => {
     data[i] = {
-      image : $(item).find('img.cr-standard-grid-item-content__image').attr('src')?.trim().replace('/size/110x110', '/size/220x220'),
+      image : $(item).find('img.cr-standard-grid-item-content__image').attr('src')?.trim().replace('/size/110x110', ''),
       link : 'https://www.credly.com' + $(item).attr('href'),
       title : $(item).find('div.cr-standard-grid-item-content__title').text().trim()
     }
@@ -41,7 +41,7 @@ router.get('/', async function(req, res, next) {
         return data.slice(row*columns, (row+1)*columns).map((item, index)=>{
           return(
             `<g>
-              <image x='${index*240+10}' y='${row*240+10}' href='${item.image}' />
+              <image x='${index*240+10}' y='${row*240+10}' width='220' height='220' href='${item.image}' />
             </g>`
           )
         })
