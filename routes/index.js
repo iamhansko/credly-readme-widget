@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
   const columns = req.query.col || 4;
   const username = req.query.name;
 
-  const width = size == 's' ? 110 : size == 'l' ? 340 : 220 
+  const width = size == 's' ? 110 : size == 'l' ? 220 : 160 
 
   if (!username) {
     const userNameEmptyErrorMessage = 'Username is Empty';
