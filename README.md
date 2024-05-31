@@ -22,12 +22,7 @@ or
   ```
   [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
 - ```markdown
-  # col=6
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=6)](https://credly.com/users/hyunsu-ko)
-  ```
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=6)](https://credly.com/users/hyunsu-ko)
-- ```markdown
-  # col=8 & size=s
+  # col=6 & size=s
   [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
   ```
   [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
