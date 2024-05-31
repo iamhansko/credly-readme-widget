@@ -4,8 +4,11 @@ var cheerio = require('cheerio');
 var { convert } = require('convert-svg-to-png');
 
 router.get('/', async function(req, res, next) {
+  const size = req.query.size || 'm' // size : 's' | 'm' | 'l'
   const columns = req.query.col || 4;
   const username = req.query.name;
+
+  const width = size == 's' ? 110 : size == 'l' ? 340 : 220 
 
   if (!username) {
     const userNameEmptyErrorMessage = 'Username is Empty';
@@ -36,12 +39,12 @@ router.get('/', async function(req, res, next) {
   const rows = Math.ceil(data.length / columns);
 
   const svg = `
-    <svg xmlns='http://www.w3.org/2000/svg' width='${columns*240}' height='${rows*240}'>
+    <svg xmlns='http://www.w3.org/2000/svg' width='${columns*(width+20)}' height='${rows*(width+20)}'>
       ${Array.from({length : rows}, () => 0).map((_, row)=>{
         return data.slice(row*columns, (row+1)*columns).map((item, index)=>{
           return(
             `<g>
-              <image x='${index*240+10}' y='${row*240+10}' width='220' height='220' href='${item.image}' />
+              <image x='${index*(width+20)+10}' y='${row*(width+20)+10}' width='${width}' height='${width}' href='${item.image}' />
             </g>`
           )
         })

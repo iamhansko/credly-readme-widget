@@ -1,17 +1,18 @@
 # Credly ReadME Widget
-![demo](https://credly.scg.skku.ac.kr?name=seungryel-sim&col=5)
+![Demo](https://credly.scg.skku.ac.kr?name=seungryel-sim&col=5)
 
 ## How to Use
 - API Endpoint : `https://credly.scg.skku.ac.kr`
 - Query Params :
     - `name` : YOUR_CREDLY_USERNAME
     - `col` : NUMBER_OF_BADGES_PER_COLUMNS (default : 4)
+    - `size` : BADGE_SIZE ('s' or 'm' or 'l', default: 'm')
 ```markdown
-[![img](https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS)](https://credly.com/users/YOUR_CREDLY_USERNAME)
+[![img](https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE)](https://credly.com/users/YOUR_CREDLY_USERNAME)
 
 or
 
-<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS" /></a>
+<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE" /></a>
 ```
 
 ## Examples
@@ -25,6 +26,11 @@ or
   [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=6)](https://credly.com/users/hyunsu-ko)
   ```
   [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=6)](https://credly.com/users/hyunsu-ko)
+- ```markdown
+  # col=8 & size=s
+  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
+  ```
+  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
 
 ## Development Stage
 ```bash
