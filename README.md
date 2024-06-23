@@ -1,5 +1,5 @@
 # Credly ReadME Widget
-![Demo](https://credly.scg.skku.ac.kr/?name=seungryel-sim&col=4&line=1&size=s)
+![Demo](https://credly.scg.skku.ac.kr/?name=seungryel-sim&size=s&col=3&line=1)
 
 ## How to Use
 - API Endpoint : `https://credly.scg.skku.ac.kr`
