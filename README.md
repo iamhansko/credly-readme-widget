@@ -1,8 +1,8 @@
 # Credly ReadME Widget
-![Demo](https://credly.scg.skku.ac.kr/?name=seungryel-sim&size=s&col=3&line=1)
+![Demo](https://credly.awskorea.kr?name=seungryel-sim&size=s&col=3&line=1)
 
 ## How to Use
-- API Endpoint : `https://credly.scg.skku.ac.kr`
+- API Endpoint : `https://credly.awskorea.kr`
 - Query Params :
     - `name` : YOUR_CREDLY_USERNAME (required)
     - `col` : NUMBER_OF_BADGES_PER_COLUMNS (default : 4)
@@ -10,34 +10,34 @@
     - `line` : LINE_NUMBER_TO_DISPLAY (if line is positive integer, only selected line displayed)
 
 ```markdown
-[![img](https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE)](https://credly.com/users/YOUR_CREDLY_USERNAME)
+[![img](https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE)](https://credly.com/users/YOUR_CREDLY_USERNAME)
 
 or
 
-<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.scg.skku.ac.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE" /></a>
+<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE" /></a>
 
 or
 
 <!-- If Badges are Too Many to Display in a Single PNG -->
-![line1](https://credly.scg.skku.ac.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=1)<br/>
-![line2](https://credly.scg.skku.ac.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=2)<br/>
-![line3](https://credly.scg.skku.ac.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=3)<br/>
-![line4](https://credly.scg.skku.ac.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=4)<br/>
-![line5](https://credly.scg.skku.ac.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=5)<br/>
+![line1](https://credly.awskorea.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=1)<br/>
+![line2](https://credly.awskorea.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=2)<br/>
+![line3](https://credly.awskorea.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=3)<br/>
+![line4](https://credly.awskorea.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=4)<br/>
+![line5](https://credly.awskorea.kr/?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&line=5)<br/>
 ...
 ```
 
 ## Examples
 - ```markdown
   # col=4(default)
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
   ```
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
 - ```markdown
   # col=6 & size=s
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
   ```
-  [![img](https://credly.scg.skku.ac.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
 
 ## Development Stage
 ```bash
