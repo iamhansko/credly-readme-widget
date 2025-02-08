@@ -63,5 +63,5 @@ docker run -dp 5000:5000 credly-readme-widget
 # Multi-Platform Build (x86, ARM, ...)
 docker buildx create --name builder --bootstrap --use
 docker buildx build --platform linux/amd64,linux/arm64 -t DOCKERHUB_USERNAME/credly-readme-widget --push .
-docker run -dp 5000:5000 DOCKERHUB_USERNAME/credly-readme-widget
+docker run -dp 5000:5000 --restart always DOCKERHUB_USERNAME/credly-readme-widget
 ```
