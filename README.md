@@ -4,17 +4,17 @@
 ## How to Use
 - API Endpoint : `https://credly.awskorea.kr`
 - Query Params :
-    - `name` : YOUR_CREDLY_USERNAME (required)
+    - `name` : YOUR_CREDLY_USERNAME (`required`)
+    - `line` : LINE_NUMBER_TO_DISPLAY (`required`) (if line is positive integer, only selected line displayed)
     - `col` : NUMBER_OF_BADGES_PER_COLUMNS (default : 4)
     - `size` : BADGE_SIZE ('s' or 'm' or 'l', default: 'm')
-    - `line` : LINE_NUMBER_TO_DISPLAY (if line is positive integer, only selected line displayed)
 
 ```markdown
-[![img](https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE)](https://credly.com/users/YOUR_CREDLY_USERNAME)
+[![img](https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&line=NUMBER_OF_LINE&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE)](https://credly.com/users/YOUR_CREDLY_USERNAME)
 
 or
 
-<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE" /></a>
+<a target="_blank" href="https://credly.com/users/YOUR_CREDLY_USERNAME"><img src="https://credly.awskorea.kr?name=YOUR_CREDLY_USERNAME&line=NUMBER_OF_LINE&col=NUMBER_OF_BADGES_PER_COLUMNS&size=BADGE_SIZE" /></a>
 
 or
 
@@ -30,14 +30,14 @@ or
 ## Examples
 - ```markdown
   # col=4(default)
-  [![img](https://credly.awskorea.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&line=1)](https://credly.com/users/hyunsu-ko)
   ```
-  [![img](https://credly.awskorea.kr?name=hyunsu-ko)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&line=1)](https://credly.com/users/hyunsu-ko)
 - ```markdown
   # col=6 & size=s
-  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s&line=1)](https://credly.com/users/hyunsu-ko)
   ```
-  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s)](https://credly.com/users/hyunsu-ko)
+  [![img](https://credly.awskorea.kr?name=hyunsu-ko&col=8&size=s&line=1)](https://credly.com/users/hyunsu-ko)
 
 ## Development Stage
 ```bash

@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env CONTAINER_RUNTIME=none nodemon ./bin/www",
-    "start": "cross-env CONTAINER_RUNTIME=none node ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
   },
   "dependencies": {
+    "@neplex/vectorizer": "^0.0.5",
     "cheerio": "^1.0.0-rc.12",
-    "convert-svg-to-png": "^0.6.4",
     "cookie-parser": "~1.4.4",
-    "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
