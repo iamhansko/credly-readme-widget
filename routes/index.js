@@ -30,7 +30,7 @@ router.get('/', async function(req, res, next) {
   }
 
   const imageList = [];
-  badgeList.map((i, item) => {imageList[i] = $(item).find('img.cr-standard-grid-item-content__image').attr('src')?.trim().replace('/size/110x110', '')});
+  badgeList.map((i, item) => {imageList[i] = $(item).find('img.settings__skills-profile__edit-skills-profile__badge-card__badge-image').attr('src')?.trim().replace('/size/110x110', '')});
   const rows = Math.ceil(imageList.length / columns);
   const svg = line > 0 ? 
     imageList.slice((line-1)*columns, line*columns).length ?
