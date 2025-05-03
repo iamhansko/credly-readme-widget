@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const cheerio = require('cheerio');
 const { vectorize, ColorMode, Hierarchical, PathSimplifyMode } = require('@neplex/vectorizer');
 const { writeFile, readFile, access, mkdir } = require('node:fs/promises');
 
@@ -42,41 +41,56 @@ router.get('/', async function(req, res, next) {
   const columns = req.query.col && req.query.col > 0 ? req.query.col : 4;
   const username = req.query.name;
 
-  const width = size == 's' ? 110 : size == 'l' ? 220 : 160;
-  const scale = size == 's' ? 0.183 : size == 'l' ? 0.367 : 0.267;
+  const width = size == 's' ? 80 : size == 'l' ? 220 : 160;
 
   if (!username) {
     const userNameEmptyErrorMessage = 'Username is Empty';
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='150'><text x='10' y='40'>${userNameEmptyErrorMessage}</text></svg>`);
+    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='160'><text x='10' y='40'>${userNameEmptyErrorMessage}</text></svg>`);
     return null;
   }
 
   if (!line) {
     const linenumberEmptyErrorMessage = 'Linenumber is Empty';
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='150'><text x='10' y='40'>${linenumberEmptyErrorMessage}</text></svg>`);
+    res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='170'><text x='10' y='40'>${linenumberEmptyErrorMessage}</text></svg>`);
     return null;
   }
 
-  const html = await fetch(`https://www.credly.com/users/${username}/badges`);
-  const $ = cheerio.load(await html.text());
-  const badgeList = $('.cr-standard-grid-item-content__image');
+  const response = await fetch(`https://www.credly.com/users/${username}/badges?page=1&page_size=100&sort=rank`, {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Accept': 'application/json'
+    },
+  });
+  const jsonData = await response.json();
+  const badgeList = jsonData.data;
+  const imageList = badgeList.map(badge => {
+    const imageData = {};
+    imageData.src = badge.image_url;
+    const imageString = imageData.src.split('.');
+    switch(imageString[imageString.length-1]) {
+      case 'png': 
+        imageData.scale = size == 's' ? 0.143 : size == 'l' ? 0.391 : 0.267;
+        break;
+      default: // blob
+        imageData.scale = size == 's' ? 0.066 : size == 'l' ? 0.177 : 0.120;
+        break;
+    }
+    return imageData;
+  });
 
-  if (!badgeList.length) {
+  if (!imageList.length) {
     const noDataErrorMessage = 'No Data Found';
     res.setHeader('Content-Type', 'image/svg+xml');
     res.send(`<svg xmlns='http://www.w3.org/2000/svg' width='150'><text x='10' y='40'>${noDataErrorMessage}</text></svg>`);
     return null;
   }
 
-  const imageList = [];
-  badgeList.map((i, item) => {imageList[i] = item.attribs.src.trim().replace('/size/110x110', '')});
-
   const svg = await imageList.slice((line-1)*columns, line*columns).reduce(async (promise, item, index) => {
     let acc = await promise;
-    acc += `<g transform='scale(${scale})'>`
-    acc += (await download(item)).replace('<svg', `<svg x='${(1/scale)*index*(width+20)+10}' y='${(1/scale)*10}'`)
+    acc += `<g transform='scale(${item.scale})'>`
+    acc += (await download(item.src)).replace('<svg', `<svg x='${(1/item.scale)*index*(width+20)+10}' y='${(1/item.scale)*10}'`)
     acc += '</g>'
     return acc.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
   }, `<svg xmlns='http://www.w3.org/2000/svg' width='${columns*(width+20)}' height='${(width+20)}'>`) + '</svg>'

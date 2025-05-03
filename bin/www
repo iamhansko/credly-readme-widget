@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('credly-readme-widget:server');
 var http = require('http');
+var path = require('path'); 
 
 /**
  * Get port from environment and store in Express.
@@ -14,6 +15,8 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
+app.set('view engine', 'ejs'); 
+app.set('views', path.join(__dirname, 'views')); 
 
 /**
  * Create HTTP server.
