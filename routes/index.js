@@ -70,10 +70,10 @@ router.get('/', async function(req, res, next) {
     imageData.src = badge.image_url;
     const imageString = imageData.src.split('.');
     switch(imageString[imageString.length-1]) {
-      case 'png': 
+      case 'png': // 600x600
         imageData.scale = size == 's' ? 0.143 : size == 'l' ? 0.391 : 0.267;
         break;
-      default: // blob
+      default: // 761x761 (blob)
         imageData.scale = size == 's' ? 0.066 : size == 'l' ? 0.177 : 0.120;
         break;
     }
